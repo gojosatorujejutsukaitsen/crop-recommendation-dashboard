@@ -74,16 +74,14 @@ fig.update_layout(
 
 st.plotly_chart(fig, use_container_width=True)
 
-st.info("""
-📌 **Insight Utama**
+st.success("""
+• Seluruh 22 jenis tanaman memiliki jumlah observasi yang identik (100 data per kelas), menghasilkan distribusi yang sepenuhnya seimbang.
 
-• Seluruh 22 jenis tanaman memiliki jumlah observasi yang sama, yaitu 100 data.
+• Keseimbangan ini mengurangi risiko model lebih sering memprediksi kelas tertentu akibat dominasi jumlah data.
 
-• Distribusi kelas yang sepenuhnya seimbang menunjukkan tidak adanya masalah *class imbalance*.
+• Dengan tidak adanya class imbalance, perbandingan performa antar kelas pada tahap klasifikasi dapat dievaluasi secara lebih objektif dan reliabel.
 
-• Kondisi ini membantu model klasifikasi mempelajari seluruh kelas secara adil tanpa dominasi kelas tertentu.
-
-• Dataset yang seimbang meningkatkan reliabilitas evaluasi performa model klasifikasi.
+• Kondisi ini menjadi salah satu faktor yang mendukung tingginya performa model klasifikasi pada penelitian ini.
 """)
 
 # =========================
@@ -103,14 +101,16 @@ fig.update_layout(height=550)
 
 st.plotly_chart(fig, use_container_width=True)
 
-st.info("""
+st.success("""
 📌 Insight Utama
 
-• Kandungan Nitrogen memiliki variasi paling besar dibandingkan Fosfor dan Kalium.
+• Nitrogen (N) menunjukkan rentang nilai paling luas dibandingkan Fosfor (P) dan Kalium (K), mengindikasikan bahwa kebutuhan unsur hara nitrogen antar tanaman dalam dataset sangat beragam.
 
-• Kalium menunjukkan rentang distribusi yang lebih sempit sehingga relatif lebih stabil.
+• Fosfor (P) memiliki nilai tengah yang relatif lebih tinggi dan distribusi yang cukup konsisten pada sebagian besar observasi.
 
-• Variasi nutrisi yang tinggi menunjukkan bahwa dataset mencakup beragam kondisi kesuburan tanah.
+• Kalium (K) menampilkan beberapa nilai ekstrem yang jauh di atas mayoritas data, menunjukkan adanya kelompok tanaman dengan kebutuhan kalium yang sangat tinggi.
+
+• Variasi unsur hara yang cukup besar menunjukkan bahwa rekomendasi tanaman tidak hanya dipengaruhi kondisi lingkungan, tetapi juga karakteristik kesuburan tanah yang berbeda antar komoditas.
 """)
 
 st.divider()
@@ -132,14 +132,16 @@ fig.update_layout(height=550)
 
 st.plotly_chart(fig, use_container_width=True)
 
-st.info("""
+st.success("""
 📌 Insight Utama
 
-• Curah hujan memiliki variasi terbesar dibandingkan seluruh variabel lingkungan.
+• Curah hujan (rainfall) memiliki variasi terbesar dibandingkan seluruh variabel lingkungan, menunjukkan bahwa kebutuhan air antar jenis tanaman dalam dataset sangat beragam.
 
-• Nilai pH relatif stabil dengan rata-rata mendekati kondisi netral.
+• Kelembapan (humidity) juga memperlihatkan rentang distribusi yang luas sehingga berpotensi menjadi faktor pembeda penting dalam proses klasifikasi tanaman.
 
-• Mayoritas observasi berada pada lingkungan dengan kelembapan tinggi yang mencerminkan karakteristik wilayah tropis.
+• Nilai pH relatif stabil dengan variasi yang lebih kecil dibandingkan variabel lingkungan lainnya, menandakan bahwa sebagian besar tanaman berada pada kisaran keasaman tanah yang tidak terlalu berbeda.
+
+• Temuan ini konsisten dengan hasil pemodelan Random Forest yang menunjukkan bahwa curah hujan dan kelembapan merupakan dua variabel paling berpengaruh dalam menentukan rekomendasi tanaman.
 """)
 
 st.divider()
@@ -165,14 +167,16 @@ plt.title("Heatmap Korelasi Variabel")
 
 st.pyplot(fig)
 
-st.info("""
-📌 Korelasi digunakan untuk melihat hubungan antar variabel.
+st.success("""
+📌 Insight Utama
 
-• Nilai mendekati 1 menunjukkan hubungan positif yang kuat.
+• Hubungan terkuat ditemukan antara Fosfor (P) dan Kalium (K) dengan koefisien korelasi sebesar 0,74, menunjukkan bahwa kedua unsur hara tersebut cenderung meningkat secara bersamaan pada beberapa kondisi lahan.
 
-• Nilai mendekati -1 menunjukkan hubungan negatif yang kuat.
+• Sebagian besar pasangan variabel memiliki korelasi yang rendah (|r| < 0,30), menandakan bahwa setiap variabel menyimpan informasi yang relatif berbeda.
 
-• Nilai mendekati 0 menunjukkan hubungan yang lemah.
+• Curah hujan (rainfall) menunjukkan korelasi yang sangat lemah dengan variabel lainnya, sehingga berpotensi memberikan informasi unik dalam proses klasifikasi tanaman.
+
+• Rendahnya korelasi antar sebagian besar variabel mengindikasikan bahwa rekomendasi tanaman dipengaruhi oleh kombinasi berbagai faktor tanah dan lingkungan, bukan oleh satu faktor dominan saja.
 """)
 
 # =========================
