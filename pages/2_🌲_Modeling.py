@@ -225,12 +225,13 @@ st.image(
 )
 
 st.success("""
-1. Sebagian besar observasi berhasil diklasifikasikan dengan benar oleh Random Forest.
+1. Akurasi Random Forest sebesar 99,55% menunjukkan bahwa karakteristik tanah dan lingkungan yang digunakan dalam penelitian memiliki kemampuan diskriminasi yang sangat tinggi terhadap 22 jenis tanaman.
 
-2. Kesalahan prediksi antar kelas sangat minim, terlihat dari dominasi nilai pada diagonal utama matriks.
+2. Confusion matrix memperlihatkan konsentrasi nilai pada diagonal utama, menandakan bahwa kesalahan klasifikasi antar kelas sangat minim.
 
-3. Akurasi model mencapai 99,55%, menunjukkan kemampuan klasifikasi yang sangat tinggi.
+3. Tingginya performa model mengindikasikan bahwa pola hubungan antara unsur hara (N, P, K) dan faktor lingkungan (suhu, kelembapan, pH, serta curah hujan) dapat dimanfaatkan secara efektif untuk proses rekomendasi tanaman.
 
-4. Hasil ini mengonfirmasi bahwa Random Forest merupakan model terbaik untuk sistem rekomendasi tanaman.
+4. Dibandingkan Decision Tree, Random Forest menghasilkan akurasi yang lebih tinggi karena menggabungkan banyak pohon keputusan sehingga mampu mengurangi overfitting dan meningkatkan kemampuan generalisasi model.
+
+5. Temuan ini mendukung penggunaan Random Forest sebagai model utama dalam sistem rekomendasi tanaman berbasis kondisi tanah dan iklim.
 """)
-
