@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import seaborn as sns
+import matplotlib.pyplot as plt
 
 # =========================
 # LOAD DATA
@@ -135,6 +137,37 @@ st.info("""
 """)
 
 st.divider()
+
+st.markdown("---")
+
+st.markdown("## 🔗 Korelasi Antar Variabel")
+
+corr = df.drop(columns=["label"]).corr()
+
+fig, ax = plt.subplots(figsize=(10,6))
+
+sns.heatmap(
+    corr,
+    annot=True,
+    cmap="Blues",
+    fmt=".2f",
+    linewidths=0.5,
+    ax=ax
+)
+
+plt.title("Heatmap Korelasi Variabel")
+
+st.pyplot(fig)
+
+st.info("""
+📌 Korelasi digunakan untuk melihat hubungan antar variabel.
+
+• Nilai mendekati 1 menunjukkan hubungan positif yang kuat.
+
+• Nilai mendekati -1 menunjukkan hubungan negatif yang kuat.
+
+• Nilai mendekati 0 menunjukkan hubungan yang lemah.
+""")
 
 # =========================
 # TABEL STATISTIK
