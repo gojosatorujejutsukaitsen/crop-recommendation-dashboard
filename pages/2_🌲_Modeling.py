@@ -13,9 +13,7 @@ algoritma Decision Tree dan Random Forest.
 st.divider()
 
 # KPI MODEL
-col1, col2, col3
-
-= st.columns(3)
+col1, col2, col3 = st.columns(3)
 
 col1.metric(
     "Decision Tree Accuracy",
