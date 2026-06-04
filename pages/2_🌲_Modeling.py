@@ -92,3 +92,55 @@ st.success("""
 
 📈 Selisih performa menunjukkan bahwa pendekatan ensemble pada Random Forest mampu meningkatkan kemampuan klasifikasi dibandingkan satu pohon keputusan tunggal.
 """)
+
+# ==================================================
+# FEATURE IMPORTANCE RANDOM FOREST
+# ==================================================
+
+import joblib
+import pandas as pd
+import plotly.express as px
+
+st.divider()
+
+st.subheader("🌲 Feature Importance Random Forest")
+
+rf_model = joblib.load(
+    "data/data/models/random_forest.pkl"
+)
+
+fitur = [
+    "N",
+    "P",
+    "K",
+    "temperature",
+    "humidity",
+    "ph",
+    "rainfall"
+]
+
+importance_df = pd.DataFrame({
+    "Fitur": fitur,
+    "Importance": rf_model.feature_importances_
+}).sort_values(
+    by="Importance",
+    ascending=True
+)
+
+fig = px.bar(
+    importance_df,
+    x="Importance",
+    y="Fitur",
+    orientation="h",
+    color="Importance",
+    color_continuous_scale="greens",
+    title="Feature Importance Random Forest"
+)
+
+fig.update_layout(height=500)
+
+st.plotly_chart(fig, use_container_width=True)
+
+st.info("""
+Variabel dengan nilai importance tertinggi merupakan faktor yang paling berpengaruh dalam menentukan rekomendasi tanaman. Semakin besar nilai importance, semakin besar kontribusinya terhadap keputusan model Random Forest.
+""")
