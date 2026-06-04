@@ -44,7 +44,7 @@ st.divider()
 # =========================
 # DISTRIBUSI TANAMAN
 # =========================
-st.subheader("Distribusi Jenis Tanaman")
+st.subheader("🌾 Distribusi Jenis Tanaman")
 
 label_count = (
     df["label"]
@@ -61,24 +61,30 @@ fig = px.bar(
     y="Tanaman",
     orientation="h",
     color="Jumlah",
-    color_continuous_scale="Blues"
+    color_continuous_scale="Blues",
+    text="Jumlah"
 )
 
-fig.update_layout(height=700)
+fig.update_layout(
+    height=700,
+    coloraxis_showscale=False,
+    xaxis_title="Jumlah Observasi",
+    yaxis_title="Jenis Tanaman"
+)
 
 st.plotly_chart(fig, use_container_width=True)
 
 st.info("""
-📌 Insight Utama
+📌 **Insight Utama**
 
-• Seluruh 22 jenis tanaman memiliki jumlah observasi yang sama yaitu 100 data.
+• Seluruh 22 jenis tanaman memiliki jumlah observasi yang sama, yaitu 100 data.
 
-• Tidak terdapat class imbalance sehingga model memperoleh kesempatan belajar yang seimbang pada setiap kelas tanaman.
+• Distribusi kelas yang sepenuhnya seimbang menunjukkan tidak adanya masalah *class imbalance*.
 
-• Keseimbangan dataset menjadi salah satu faktor yang mendukung tingginya performa Random Forest dengan akurasi 99,55%.
+• Kondisi ini membantu model klasifikasi mempelajari seluruh kelas secara adil tanpa dominasi kelas tertentu.
+
+• Dataset yang seimbang meningkatkan reliabilitas evaluasi performa model klasifikasi.
 """)
-
-st.divider()
 
 # =========================
 # NPK
