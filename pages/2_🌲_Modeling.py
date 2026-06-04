@@ -162,7 +162,9 @@ dt_model = joblib.load(
     "data/data/models/decision_tree.pkl"
 )
 
-fig, ax = plt.subplots(figsize=(22, 10))
+le = joblib.load(
+    "data/data/models/label_encoder.pkl"
+)
 
 fitur = [
     "N",
@@ -174,9 +176,12 @@ fitur = [
     "rainfall"
 ]
 
+fig, ax = plt.subplots(figsize=(22, 10))
+
 plot_tree(
     dt_model,
     feature_names=fitur,
+    class_names=le.classes_,
     filled=True,
     rounded=True,
     max_depth=3,
@@ -187,4 +192,14 @@ st.pyplot(fig)
 
 st.info("""
 Visualisasi ini menampilkan 3 level pertama dari Decision Tree untuk memudahkan interpretasi proses klasifikasi tanaman.
+""")
+
+st.success("""
+🌧️ Curah hujan (rainfall) menjadi variabel pertama yang digunakan model untuk memisahkan jenis tanaman, menunjukkan pengaruhnya yang sangat dominan.
+
+💧 Setelah curah hujan, kelembapan (humidity) dan kandungan Kalium (K) menjadi faktor pembeda utama pada percabangan berikutnya.
+
+🌱 Variabel pH tidak muncul pada tiga level awal pohon keputusan, mengindikasikan kontribusinya relatif lebih rendah dibanding variabel lingkungan lainnya.
+
+🎯 Dengan hanya beberapa aturan keputusan sederhana, Decision Tree mampu mencapai akurasi 96,36%, menunjukkan pola klasifikasi yang cukup jelas pada dataset.
 """)
