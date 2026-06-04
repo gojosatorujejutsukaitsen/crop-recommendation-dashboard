@@ -1,6 +1,11 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+from sklearn.metrics import confusion_matrix
 
 st.set_page_config(layout="wide")
 
@@ -203,3 +208,29 @@ st.success("""
 
 🎯 Dengan hanya beberapa aturan keputusan sederhana, Decision Tree mampu mencapai akurasi 96,36%, menunjukkan pola klasifikasi yang cukup jelas pada dataset.
 """)
+
+
+
+# ==================================================
+# CONFUSION MATRIX RANDOM FOREST
+# ==================================================
+
+st.divider()
+
+st.subheader("🎯 Confusion Matrix Random Forest")
+
+st.image(
+    "data/data/klasif_03_cm_random_forest.png",
+    use_container_width=True
+)
+
+st.success("""
+1. Sebagian besar observasi berhasil diklasifikasikan dengan benar oleh Random Forest.
+
+2. Kesalahan prediksi antar kelas sangat minim, terlihat dari dominasi nilai pada diagonal utama matriks.
+
+3. Akurasi model mencapai 99,55%, menunjukkan kemampuan klasifikasi yang sangat tinggi.
+
+4. Hasil ini mengonfirmasi bahwa Random Forest merupakan model terbaik untuk sistem rekomendasi tanaman.
+""")
+
