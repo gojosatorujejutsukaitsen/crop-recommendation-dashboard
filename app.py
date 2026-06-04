@@ -29,32 +29,34 @@ col4.metric("Data Setelah Cleaning", f"{len(df_clean):,}")
 st.divider()
 
 # EXECUTIVE SUMMARY
-st.markdown("## Ringkasan Penelitian")
+st.markdown("## 📖 Ringkasan Penelitian")
 
 st.info("""
-Penelitian ini membangun sistem rekomendasi tanaman berdasarkan kondisi tanah dan iklim menggunakan algoritma Decision Tree dan Random Forest.
+Penelitian ini bertujuan membangun sistem rekomendasi tanaman berdasarkan kondisi tanah dan iklim menggunakan algoritma Decision Tree dan Random Forest.
 
-Dataset terdiri dari 2.200 observasi dan 22 jenis tanaman dengan 7 variabel lingkungan yang mempengaruhi pertumbuhan tanaman.
+Dataset yang digunakan terdiri dari 2.200 observasi, 22 jenis tanaman, dan 7 variabel yang merepresentasikan unsur hara tanah serta faktor lingkungan.
 
-Random Forest menjadi model terbaik dengan akurasi 99,55%.
+Melalui pendekatan machine learning, sistem dapat memberikan rekomendasi jenis tanaman yang sesuai berdasarkan karakteristik lahan yang dimasukkan pengguna.
 """)
 
 st.divider()
 
 # PREVIEW DATA
-st.markdown("## Preview Dataset")
+st.markdown("## 📄 Preview Dataset")
 
 st.dataframe(df.head(20), use_container_width=True)
 
 st.divider()
 
 # INSIGHT
-st.markdown("## Insight Utama")
+st.markdown("## 💡 Insight Utama")
 
 st.success("""
-• Dataset mencakup 22 jenis tanaman yang mewakili berbagai kondisi agroklimat.
+• Dataset memiliki distribusi kelas yang sepenuhnya seimbang sehingga proses pelatihan model berlangsung tanpa bias akibat dominasi kelas tertentu.
 
-• Curah hujan dan kelembapan menjadi faktor paling dominan dalam menentukan rekomendasi tanaman.
+• Curah hujan dan kelembapan terbukti menjadi faktor lingkungan yang paling berpengaruh dalam menentukan rekomendasi tanaman.
 
-• Random Forest menghasilkan performa hampir sempurna dengan akurasi 99,55%.
+• Random Forest memberikan performa terbaik dengan akurasi 99,55% dan mampu mempertahankan F1-Score yang tinggi pada hampir seluruh jenis tanaman.
+
+• Hasil penelitian menunjukkan bahwa kombinasi informasi tanah dan iklim dapat dimanfaatkan secara efektif untuk mendukung pengambilan keputusan dalam pemilihan tanaman.
 """)
