@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 
+st.sidebar.title("📋 Menu Dashboard")
+st.sidebar.markdown("Halaman Utama")
 st.set_page_config(
     page_title="Crop Recommendation Dashboard",
     page_icon="🌱",
