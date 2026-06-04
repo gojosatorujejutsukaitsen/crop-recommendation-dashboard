@@ -7,6 +7,8 @@ st.set_page_config(
     layout="wide"
 )
 
+st.title("🌱 Crop Recommendation Dashboard")
+
 # LOAD DATA
 df = pd.read_csv("data/data/Crop_recommendation.csv")
 df_clean = pd.read_csv("data/data/Crop_recommendation_clean.csv")
