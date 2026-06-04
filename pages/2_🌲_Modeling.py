@@ -89,13 +89,14 @@ st.plotly_chart(
 # =========================
 # INSIGHT DI BAWAH GRAFIK
 # =========================
-
 st.success("""
-🎯 Random Forest memberikan performa terbaik dengan akurasi 99,55%.
+1. Random Forest memperoleh akurasi 99,55%, lebih tinggi 3,19 poin persentase dibandingkan Decision Tree.
 
-🌳 Decision Tree tetap memiliki performa sangat baik dengan akurasi 96,36%.
+2. Nilai F1-Score dan Cross Validation yang juga lebih tinggi menunjukkan bahwa performa Random Forest tidak hanya akurat, tetapi juga lebih konsisten pada berbagai subset data.
 
-📈 Selisih performa menunjukkan bahwa pendekatan ensemble pada Random Forest mampu meningkatkan kemampuan klasifikasi dibandingkan satu pohon keputusan tunggal.
+3. Hasil ini menunjukkan bahwa kombinasi banyak pohon keputusan (ensemble learning) mampu menghasilkan model yang lebih stabil dibandingkan penggunaan satu pohon keputusan tunggal.
+
+4. Oleh karena itu, Random Forest dipilih sebagai model utama dalam sistem rekomendasi tanaman.
 """)
 
 # ==================================================
@@ -146,8 +147,14 @@ fig.update_layout(height=500)
 
 st.plotly_chart(fig, use_container_width=True)
 
-st.info("""
-Variabel dengan nilai importance tertinggi merupakan faktor yang paling berpengaruh dalam menentukan rekomendasi tanaman. Semakin besar nilai importance, semakin besar kontribusinya terhadap keputusan model Random Forest.
+st.success("""
+1. Curah hujan (rainfall) merupakan faktor paling berpengaruh dalam menentukan jenis tanaman yang direkomendasikan.
+
+2. Kelembapan (humidity) menempati urutan kedua, menunjukkan bahwa kondisi ketersediaan air menjadi aspek utama dalam klasifikasi tanaman.
+
+3. Unsur hara Kalium (K) dan Fosfor (P) memiliki kontribusi yang lebih besar dibandingkan Nitrogen (N), mengindikasikan bahwa kebutuhan nutrisi tanaman tidak hanya ditentukan oleh satu unsur hara tertentu.
+
+4. Nilai pH memiliki pengaruh paling rendah pada model, sehingga perbedaannya antar tanaman relatif tidak sebesar variabel lingkungan lainnya.
 """)
 
 
@@ -234,4 +241,52 @@ st.success("""
 4. Dibandingkan Decision Tree, Random Forest menghasilkan akurasi yang lebih tinggi karena menggabungkan banyak pohon keputusan sehingga mampu mengurangi overfitting dan meningkatkan kemampuan generalisasi model.
 
 5. Temuan ini mendukung penggunaan Random Forest sebagai model utama dalam sistem rekomendasi tanaman berbasis kondisi tanah dan iklim.
+""")
+
+
+# ==================================================
+# F1-SCORE PER KELAS
+# ==================================================
+
+st.divider()
+
+st.subheader("📈 F1-Score per Kelas Tanaman")
+
+st.image(
+    "data/data/klasif_06_f1_per_kelas.png",
+    use_container_width=True
+)
+
+st.success("""
+1. Sebagian besar jenis tanaman telah berhasil diklasifikasikan dengan sangat baik oleh kedua model, ditunjukkan oleh nilai F1-Score yang mendekati 1,00 pada mayoritas kelas.
+
+2. Perbedaan performa terutama terlihat pada kelas maize, jute, lentil, rice, dan mothbeans, dimana Decision Tree masih mengalami beberapa kesalahan klasifikasi yang menyebabkan penurunan F1-Score.
+
+3. Random Forest mampu meningkatkan performa pada kelas-kelas tersebut hingga mendekati nilai sempurna, menunjukkan kemampuannya dalam menangkap pola yang lebih kompleks dibandingkan satu pohon keputusan tunggal.
+
+4. Temuan ini mengindikasikan bahwa beberapa jenis tanaman memiliki karakteristik tanah dan lingkungan yang relatif mirip sehingga memerlukan pendekatan ensemble untuk menghasilkan klasifikasi yang lebih akurat.
+
+5. Konsistensi F1-Score yang tinggi pada seluruh kelas memperkuat bahwa Random Forest tidak hanya unggul secara keseluruhan, tetapi juga memberikan performa yang stabil dan merata pada 22 jenis tanaman yang diamati.
+""")
+
+
+
+# ==================================================
+# KESIMPULAN PEMODELAN
+# ==================================================
+
+st.divider()
+
+st.subheader("🏆 Kesimpulan Pemodelan")
+
+st.success("""
+1️⃣ Random Forest menjadi model terbaik dengan akurasi 99,55%, lebih tinggi dibandingkan Decision Tree yang mencapai 96,36%.
+
+2️⃣ Analisis Feature Importance menunjukkan bahwa curah hujan (rainfall), kelembapan (humidity), dan kandungan Kalium (K) merupakan faktor yang paling berpengaruh dalam menentukan rekomendasi tanaman.
+
+3️⃣ Visualisasi Decision Tree memperlihatkan bahwa variabel lingkungan memiliki peran dominan dalam proses pemisahan kelas tanaman, terutama pada level percabangan awal.
+
+4️⃣ Hasil Confusion Matrix dan F1-Score menunjukkan bahwa Random Forest mampu mempertahankan performa yang sangat tinggi dan konsisten pada seluruh 22 jenis tanaman dengan tingkat kesalahan klasifikasi yang sangat rendah.
+
+5️⃣ Berdasarkan seluruh hasil evaluasi, Random Forest dipilih sebagai model utama dalam sistem rekomendasi tanaman karena memiliki akurasi tinggi, kemampuan generalisasi yang baik, serta performa yang stabil pada seluruh kelas tanaman.
 """)
