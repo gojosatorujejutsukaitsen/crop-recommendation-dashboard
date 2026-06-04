@@ -144,3 +144,36 @@ st.plotly_chart(fig, use_container_width=True)
 st.info("""
 Variabel dengan nilai importance tertinggi merupakan faktor yang paling berpengaruh dalam menentukan rekomendasi tanaman. Semakin besar nilai importance, semakin besar kontribusinya terhadap keputusan model Random Forest.
 """)
+
+
+# ==================================================
+# VISUALISASI DECISION TREE
+# ==================================================
+
+import joblib
+import matplotlib.pyplot as plt
+from sklearn.tree import plot_tree
+
+st.divider()
+
+st.subheader("🌳 Visualisasi Decision Tree")
+
+dt_model = joblib.load(
+    "data/data/models/decision_tree.pkl"
+)
+
+fig, ax = plt.subplots(figsize=(22, 10))
+
+plot_tree(
+    dt_model,
+    filled=True,
+    rounded=True,
+    max_depth=3,
+    fontsize=7
+)
+
+st.pyplot(fig)
+
+st.info("""
+Visualisasi ini menampilkan 3 level pertama dari Decision Tree untuk memudahkan interpretasi proses klasifikasi tanaman.
+""")
