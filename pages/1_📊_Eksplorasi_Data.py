@@ -87,7 +87,7 @@ st.success("""
 # =========================
 # NPK
 # =========================
-st.subheader("Karakteristik Nutrisi Tanah (N, P, K)")
+st.subheader("🧪 Karakteristik Nutrisi Tanah (N, P, K)")
 
 npk = df[["N", "P", "K"]]
 
@@ -118,7 +118,7 @@ st.divider()
 # =========================
 # IKLIM
 # =========================
-st.subheader("Karakteristik Lingkungan")
+st.subheader("🌦️ Karakteristik Lingkungan")
 
 iklim = df[["temperature", "humidity", "ph", "rainfall"]]
 
@@ -182,7 +182,7 @@ st.success("""
 # =========================
 # TABEL STATISTIK
 # =========================
-st.subheader("Ringkasan Statistik")
+st.subheader("📋 Ringkasan Statistik")
 
 st.dataframe(
     df.describe().round(2),
