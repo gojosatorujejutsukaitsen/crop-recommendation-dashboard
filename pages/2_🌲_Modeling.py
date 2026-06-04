@@ -164,8 +164,19 @@ dt_model = joblib.load(
 
 fig, ax = plt.subplots(figsize=(22, 10))
 
+fitur = [
+    "N",
+    "P",
+    "K",
+    "temperature",
+    "humidity",
+    "ph",
+    "rainfall"
+]
+
 plot_tree(
     dt_model,
+    feature_names=fitur,
     filled=True,
     rounded=True,
     max_depth=3,
