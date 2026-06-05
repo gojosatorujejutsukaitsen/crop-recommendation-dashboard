@@ -113,3 +113,65 @@ with col1:
         max_value=8.4,
         value=6.5
     )
+
+# ====================================
+# KOLOM KANAN - KONDISI LINGKUNGAN
+# ====================================
+
+with col2:
+
+    st.subheader("🌦️ Kondisi Lingkungan")
+
+    # TEMPERATURE
+    st.markdown("""
+    **🌡️ Suhu (Temperature)**
+
+    Suhu lingkungan tempat tanaman akan dibudidayakan.
+
+    Rentang data: 8 – 43 °C
+
+    Contoh nilai: 25 °C
+    """)
+
+    temperature = st.slider(
+        "Pilih suhu (°C)",
+        min_value=8.0,
+        max_value=43.0,
+        value=25.0
+    )
+
+    # HUMIDITY
+    st.markdown("""
+    **💧 Kelembapan (Humidity)**
+
+    Persentase kelembapan udara di sekitar lahan.
+
+    Rentang data: 14 – 100 %
+
+    Contoh nilai: 80 %
+    """)
+
+    humidity = st.slider(
+        "Pilih kelembapan (%)",
+        min_value=14.0,
+        max_value=100.0,
+        value=80.0
+    )
+
+    # RAINFALL
+    st.markdown("""
+    **🌧️ Curah Hujan (Rainfall)**
+
+    Jumlah curah hujan yang diterima lahan.
+
+    Rentang data: 20 – 300 mm
+
+    Contoh nilai: 200 mm
+    """)
+
+    rainfall = st.slider(
+        "Pilih curah hujan (mm)",
+        min_value=20.0,
+        max_value=300.0,
+        value=200.0
+    )
