@@ -17,6 +17,9 @@ df_clean = pd.read_csv("data/data/Crop_recommendation_clean.csv")
 # HEADER
 st.title("🌱 Crop Recommendation Dashboard")
 st.subheader("Klasifikasi Jenis Tanaman Berdasarkan Kondisi Tanah dan Iklim")
+st.caption(
+    "Dashboard Sistem Rekomendasi Tanaman berbasis Machine Learning menggunakan algoritma Decision Tree dan Random Forest."
+)
 
 # KPI
 col1, col2, col3, col4 = st.columns(4)
