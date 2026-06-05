@@ -209,12 +209,12 @@ if st.button(
         )
     )
 
-    hasil_prediksi = rf_model.predict(input_scaled)
+hasil_prediksi = rf_model.predict(input_scaled)
 
-    nama_tanaman = le.inverse_transform(
-        hasil_prediksi
-    )[0]
+nama_tanaman = label_encoder.inverse_transform(
+    hasil_prediksi
+)[0]
 
-    st.success(
-        f"🌱 Tanaman yang direkomendasikan: **{nama_tanaman.upper()}**"
-    )
+st.success(
+    f"🌱 Tanaman yang direkomendasikan: **{nama_tanaman.upper()}**"
+)
