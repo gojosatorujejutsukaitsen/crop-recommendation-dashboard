@@ -197,3 +197,14 @@ if st.button(
 
     st.write("Input Data:")
     st.dataframe(input_data)
+
+
+    input_scaled = scaler.transform(input_data)
+
+    st.write("Hasil Scaling:")
+    st.dataframe(
+        pd.DataFrame(
+            input_scaled,
+            columns=input_data.columns
+        )
+    )
