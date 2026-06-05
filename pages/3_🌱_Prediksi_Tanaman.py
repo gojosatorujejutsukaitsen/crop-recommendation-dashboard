@@ -1,0 +1,115 @@
+import streamlit as st
+import pandas as pd
+import numpy as np
+import joblib
+
+# ====================================
+# KONFIGURASI HALAMAN
+# ====================================
+
+st.set_page_config(
+    page_title="Prediksi Tanaman",
+    page_icon="🌱",
+    layout="wide"
+)
+
+# ====================================
+# LOAD MODEL
+# ====================================
+
+rf_model = joblib.load(
+    "data/data/models/random_forest.pkl"
+)
+
+scaler = joblib.load(
+    "data/data/models/scaler.pkl"
+)
+
+label_encoder = joblib.load(
+    "data/data/models/label_encoder.pkl"
+)
+
+# ====================================
+# HEADER
+# ====================================
+
+st.title("🌱 Prediksi Tanaman")
+
+st.markdown("""
+Masukkan karakteristik tanah dan kondisi lingkungan lahan untuk memperoleh rekomendasi tanaman yang paling sesuai berdasarkan model Random Forest.
+""")
+
+st.info("""
+Gunakan nilai yang berada dalam rentang dataset agar hasil prediksi lebih representatif.
+
+Sistem akan menganalisis kondisi lahan dan memberikan rekomendasi tanaman beserta tingkat keyakinan prediksi.
+""")
+
+col1, col2 = st.columns(2)
+
+with col1:
+
+    st.subheader("🧪 Kondisi Tanah")
+
+    st.markdown("""
+    **Nitrogen (N)**
+
+    Kadar unsur Nitrogen dalam tanah yang berperan dalam pertumbuhan vegetatif tanaman.
+
+    Rentang data: 0 – 140
+    Contoh nilai: 90
+    """)
+
+    N = st.number_input(
+        "Masukkan nilai Nitrogen (N)",
+        min_value=0.0,
+        max_value=140.0,
+        value=90.0
+    )
+
+    st.markdown("""
+    **Fosfor (P)**
+
+    Kadar unsur Fosfor yang mendukung perkembangan akar, bunga, dan buah.
+
+    Rentang data: 5 – 145
+    Contoh nilai: 42
+    """)
+
+    P = st.number_input(
+        "Masukkan nilai Fosfor (P)",
+        min_value=5.0,
+        max_value=145.0,
+        value=42.0
+    )
+
+    st.markdown("""
+    **Kalium (K)**
+
+    Kadar unsur Kalium yang membantu ketahanan tanaman terhadap penyakit dan kondisi lingkungan.
+
+    Rentang data: 5 – 205
+    Contoh nilai: 43
+    """)
+
+    K = st.number_input(
+        "Masukkan nilai Kalium (K)",
+        min_value=5.0,
+        max_value=205.0,
+        value=43.0
+    )
+
+    st.markdown("""
+    **pH Tanah**
+
+    Tingkat keasaman tanah. Nilai sekitar 7 menunjukkan kondisi netral.
+
+    Rentang data: 4.5 – 8.4
+    """)
+
+    ph = st.slider(
+        "Pilih nilai pH",
+        min_value=4.5,
+        max_value=8.4,
+        value=6.5
+    )
