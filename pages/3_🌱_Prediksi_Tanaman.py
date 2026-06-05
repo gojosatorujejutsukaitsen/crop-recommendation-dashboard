@@ -271,6 +271,30 @@ st.plotly_chart(
     use_container_width=True
 )
 
+# ====================================
+# INTERPRETASI TINGKAT KEYAKINAN
+# ====================================
+
+selisih = (
+    top3.iloc[0]["Probabilitas"]
+    - top3.iloc[1]["Probabilitas"]
+)
+
+if selisih < 0.10:
+    st.warning("""
+    Rekomendasi utama dan alternatif kedua memiliki probabilitas yang sangat berdekatan.
+
+    Hal ini menunjukkan bahwa kondisi lahan memiliki karakteristik yang cocok untuk lebih dari satu jenis tanaman.
+    """)
+else:
+    st.success("""
+    Selisih probabilitas yang cukup besar menunjukkan bahwa model memiliki keyakinan yang kuat terhadap rekomendasi tanaman utama.
+    """)
+
+# ====================================
+# INSIGHT HASIL PREDIKSI
+# ====================================
+
 st.success(f"""
 🥇 Tanaman yang paling direkomendasikan adalah **{top3.iloc[0]['Tanaman'].title()}**
 dengan tingkat keyakinan sebesar **{top3.iloc[0]['Probabilitas']:.2%}**.
