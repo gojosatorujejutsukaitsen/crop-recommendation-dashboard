@@ -208,3 +208,13 @@ if st.button(
             columns=input_data.columns
         )
     )
+
+    hasil_prediksi = rf_model.predict(input_scaled)
+
+    nama_tanaman = le.inverse_transform(
+        hasil_prediksi
+    )[0]
+
+    st.success(
+        f"🌱 Tanaman yang direkomendasikan: **{nama_tanaman.upper()}**"
+    )
