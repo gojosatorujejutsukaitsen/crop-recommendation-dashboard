@@ -218,3 +218,67 @@ nama_tanaman = label_encoder.inverse_transform(
 st.success(
     f"🌱 Tanaman yang direkomendasikan: **{nama_tanaman.upper()}**"
 )
+
+
+# ====================================
+# PROBABILITAS PREDIKSI
+# ====================================
+
+probabilitas = rf_model.predict_proba(input_scaled)[0]
+
+prob_df = pd.DataFrame({
+    "Tanaman": label_encoder.classes_,
+    "Probabilitas": probabilitas
+})
+
+prob_df = prob_df.sort_values(
+    by="Probabilitas",
+    ascending=False
+)
+
+st.subheader("🏆 Top 3 Rekomendasi Tanaman")
+
+top3 = prob_df.head(3)
+
+st.dataframe(
+    top3.style.format({
+        "Probabilitas": "{:.2%}"
+    }),
+    use_container_width=True
+)
+
+fig = px.bar(
+    top3,
+    x="Probabilitas",
+    y="Tanaman",
+    orientation="h",
+    text=top3["Probabilitas"].apply(
+        lambda x: f"{x:.2%}"
+    ),
+    color="Probabilitas",
+    color_continuous_scale="Greens",
+    title="Tingkat Keyakinan Prediksi"
+)
+
+fig.update_layout(
+    height=450,
+    yaxis=dict(categoryorder="total ascending")
+)
+
+st.plotly_chart(
+    fig,
+    use_container_width=True
+)
+
+st.success(f"""
+🥇 Tanaman yang paling direkomendasikan adalah **{top3.iloc[0]['Tanaman'].title()}**
+dengan tingkat keyakinan sebesar **{top3.iloc[0]['Probabilitas']:.2%}**.
+
+🥈 Alternatif kedua adalah **{top3.iloc[1]['Tanaman'].title()}**
+dengan probabilitas **{top3.iloc[1]['Probabilitas']:.2%}**.
+
+🥉 Alternatif ketiga adalah **{top3.iloc[2]['Tanaman'].title()}**
+dengan probabilitas **{top3.iloc[2]['Probabilitas']:.2%}**.
+
+Semakin tinggi probabilitas, semakin besar tingkat kesesuaian tanaman terhadap kondisi tanah dan lingkungan yang dimasukkan.
+""")
