@@ -175,3 +175,13 @@ with col2:
         max_value=300.0,
         value=200.0
     )
+
+
+st.divider()
+
+if st.button(
+    "🔮 Prediksi Tanaman",
+    use_container_width=True,
+    type="primary"
+):
+    st.success("Tombol prediksi berhasil ditekan.")
