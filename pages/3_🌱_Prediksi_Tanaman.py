@@ -184,4 +184,16 @@ if st.button(
     use_container_width=True,
     type="primary"
 ):
-    st.success("Tombol prediksi berhasil ditekan.")
+
+    input_data = pd.DataFrame({
+        "N": [N],
+        "P": [P],
+        "K": [K],
+        "temperature": [temperature],
+        "humidity": [humidity],
+        "ph": [ph],
+        "rainfall": [rainfall]
+    })
+
+    st.write("Input Data:")
+    st.dataframe(input_data)
