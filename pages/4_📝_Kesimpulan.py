@@ -1,4 +1,5 @@
 import streamlit as st
+from utils import tampilkan_footer
 
 st.set_page_config(
     page_title="Kesimpulan",
@@ -127,3 +128,5 @@ Berdasarkan hasil evaluasi, Random Forest berhasil memberikan performa klasifika
 
 Temuan ini menunjukkan bahwa kombinasi informasi unsur hara tanah dan kondisi lingkungan dapat dimanfaatkan secara efektif untuk membangun sistem rekomendasi tanaman berbasis Machine Learning yang akurat dan mudah digunakan.
 """)
+
+tampilkan_footer()
