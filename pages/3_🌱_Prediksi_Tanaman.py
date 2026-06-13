@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import joblib
 import plotly.express as px
+from utils import tampilkan_footer
 
 # ====================================
 # KONFIGURASI HALAMAN
@@ -307,3 +308,5 @@ dengan probabilitas **{top3.iloc[2]['Probabilitas']:.2%}**.
 
 Semakin tinggi probabilitas, semakin besar tingkat kesesuaian tanaman terhadap kondisi tanah dan lingkungan yang dimasukkan.
 """)
+
+tampilkan_footer()
