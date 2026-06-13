@@ -8,14 +8,14 @@ def tampilkan_footer():
         """
         <div style='text-align: center;
                     color: #808080;
-                    font-size: 13px;
+                    font-size: 15px;
                     line-height: 1.7;
-                    margin-top: 20px;
+                    margin-top: 35px;
                     margin-bottom: 10px;'>
 
-        <b>Crop Recommendation Dashboard</b><br><br>
+        <b>🌱 Crop Recommendation Dashboard</b><br><br>
 
-        <b>Developed by:</b><br>
+        <b>👨‍💻 Developed by:</b><br>
         Aditya Taufiqur Rahman • Aqmarine Ekstraktie Hakim • Atikah Fitriah Kaputri<br>
         Chevroline Nathalia Manalu • Nurhasanah • Yoshepine Lamria Simatupang<br><br>
 
