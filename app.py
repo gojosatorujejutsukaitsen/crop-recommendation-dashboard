@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from utils import tampilkan_footer
 
 st.sidebar.title("📋 Menu Dashboard")
 st.sidebar.markdown("Halaman Utama")
@@ -63,3 +64,6 @@ st.success("""
 
 • Hasil penelitian menunjukkan bahwa kombinasi informasi tanah dan iklim dapat dimanfaatkan secara efektif untuk mendukung pengambilan keputusan dalam pemilihan tanaman.
 """)
+
+
+tampilkan_footer()
