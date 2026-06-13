@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 import seaborn as sns
 import matplotlib.pyplot as plt
+from utils import tampilkan_footer
 
 # =========================
 # LOAD DATA
@@ -205,3 +206,5 @@ st.success("""
 
 4. Struktur dataset yang seimbang dan beragam menjadi fondasi kuat bagi pembangunan model klasifikasi tanaman.
 """)
+
+tampilkan_footer()
