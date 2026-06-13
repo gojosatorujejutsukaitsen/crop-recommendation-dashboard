@@ -6,6 +6,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 from sklearn.metrics import confusion_matrix
+from utils import tampilkan_footer
 
 st.set_page_config(layout="wide")
 
@@ -290,3 +291,5 @@ st.success("""
 
 5️⃣ Berdasarkan seluruh hasil evaluasi, Random Forest dipilih sebagai model utama dalam sistem rekomendasi tanaman karena memiliki akurasi tinggi, kemampuan generalisasi yang baik, serta performa yang stabil pada seluruh kelas tanaman.
 """)
+
+tampilkan_footer()
